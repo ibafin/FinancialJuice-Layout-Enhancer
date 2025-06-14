@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "FinancialJuice Layout Enhancer",
+  "version": "1.0",
+  "description": "Moves the right sidebar content to the top on FinancialJuice",
+  "permissions": ["activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["*://www.financialjuice.com/*"],
+      "css": ["styles.css"],
+      "js": ["content.js"]
+    }
+  ]
+} 

@@ -1,0 +1,167 @@
+/* Ensure the main container uses flex layout */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Top bar container styles */
+.top-bar-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: #242d38;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    transform: translateZ(0);
+    min-height: 90px;
+}
+
+/* Widget wrapper to maintain layout */
+.widget-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    align-items: center;
+    padding: 0 1rem;
+    width: auto;
+    min-width: min-content;
+}
+
+/* Style for prep articles section */
+.prep-articles-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.5rem;
+    background-color: #242d38;
+    min-width: fit-content;
+}
+
+.prep-articles-container p {
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.prep-articles-container strong {
+    color: #fff;
+    margin-right: 0.5rem;
+}
+
+.prep-articles-container img {
+    vertical-align: middle;
+    margin: 0 0.25rem;
+}
+
+/* Hide scrollbar but keep functionality */
+.top-bar-container::-webkit-scrollbar {
+    display: none;
+}
+
+.top-bar-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Preserve the voice player widget styles */
+.top-bar-container .voice-player {
+    margin: 0;
+    flex: 0 0 215px;
+    height: 90px;
+    min-width: 215px;
+    background-color: #242d38;
+}
+
+/* Preserve the TS widget styles */
+.top-bar-container .ts-widget {
+    margin: 0 !important;
+    flex: 0 0 215px;
+    height: 90px;
+    min-width: 215px;
+    background-color: #242d38;
+}
+
+/* Style for the earnings and other content */
+.top-bar-container #ctl00_ContentPlaceHolder1_RightSide1_earnings {
+    flex: 0 0 auto;
+    min-width: fit-content;
+    padding: 0 1rem;
+    color: #fff;
+    background-color: #242d38;
+}
+
+/* Adjust links in the earnings section */
+.top-bar-container #ctl00_ContentPlaceHolder1_RightSide1_earnings a {
+    color: #51c6e1;
+}
+
+/* Footer navigation in top bar */
+.top-bar-container .asideFooter {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    background-color: #242d38;
+}
+
+.top-bar-container .asideFooter li {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.top-bar-container .asideFooter a {
+    color: #fff;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Social footer in top bar */
+.top-bar-container .asideFooterSocial {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0;
+    margin: 0 1rem;
+    list-style: none;
+    background-color: #242d38;
+}
+
+/* Ensure proper spacing for the main content */
+.container-fluid {
+    position: relative;
+    z-index: 1;
+    margin-top: 100px;
+}
+
+/* Adjust spacing and alignment for content */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-top: 1rem;
+    padding: 0 1rem;
+}
+
+/* Ensure minimum sizes are maintained when zoomed */
+@media screen and (min-width: 320px) {
+    .top-bar-container {
+        min-width: 100%;
+        max-height: none;
+        height: auto;
+    }
+    
+    .top-bar-container > * {
+        flex-shrink: 0;
+    }
+} 
