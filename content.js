@@ -31,7 +31,7 @@ function reorganizePrepArticles(earnings) {
     earnings.appendChild(prepContainer);
 }
 
-// Function to move sidebar items to top
+// Function to move specific sidebar items to top
 function moveSidebarToTop() {
     // Don't run if we've already moved the sidebar
     if (sidebarMoved) return;
@@ -49,39 +49,42 @@ function moveSidebarToTop() {
         // Find the main content container
         const mainContent = document.querySelector('.container-fluid');
         if (mainContent) {
-            // Insert the top bar before the main content
-            mainContent.parentNode.insertBefore(topBarContainer, mainContent);
-        } else {
-            document.body.insertBefore(topBarContainer, document.body.firstChild);
+            // Insert the top bar after the header navigation
+            const headerNav = document.querySelector('header nav');
+            if (headerNav) {
+                headerNav.parentNode.insertBefore(topBarContainer, headerNav.nextSibling);
+            } else {
+                mainContent.parentNode.insertBefore(topBarContainer, mainContent);
+            }
         }
     }
 
     try {
-        // Move the elements directly instead of cloning
-        const voicePlayer = sidebar.querySelector('.voice-player');
-        const tsWidget = sidebar.querySelector('.ts-widget');
-        const earnings = sidebar.querySelector('#ctl00_ContentPlaceHolder1_RightSide1_earnings');
-        const footer = sidebar.querySelector('#divWorthYourTime');
+        // Get all sidebar elements
+        const voicePlayer = sidebar.querySelector('.voice-player');  // Audio Streaming
+        const tsWidget = sidebar.querySelector('.ts-widget');  // Tickstrike
+        const trumpSchedule = sidebar.querySelector('#ctl00_ContentPlaceHolder1_RightSide1_trumpSchedule');  // Trump's Schedule
+        const earnings = sidebar.querySelector('#ctl00_ContentPlaceHolder1_RightSide1_earnings');  // Contains prep articles
 
-        // Create a wrapper for the widgets to maintain their layout
+        // Create a wrapper for the top bar widgets
         const widgetWrapper = document.createElement('div');
         widgetWrapper.className = 'widget-wrapper';
         
+        // Move only specific items to the top bar
         if (voicePlayer) widgetWrapper.appendChild(voicePlayer);
         if (tsWidget) widgetWrapper.appendChild(tsWidget);
+        if (trumpSchedule) widgetWrapper.appendChild(trumpSchedule);
         
-        // Reorganize the prep articles before adding to the wrapper
+        // Reorganize and move prep articles
         if (earnings) {
             reorganizePrepArticles(earnings);
             widgetWrapper.appendChild(earnings);
         }
         
-        if (footer) widgetWrapper.appendChild(footer);
-        
         topBarContainer.appendChild(widgetWrapper);
 
-        // Hide the original sidebar
-        sidebar.style.display = 'none';
+        // Show the sidebar (it will contain the remaining elements)
+        sidebar.style.display = 'block';
         
         // Mark as completed
         sidebarMoved = true;
@@ -111,7 +114,7 @@ const observer = new MutationObserver((mutations) => {
 });
 
 // Start observing only the body for child changes
-observer.observe(document.body, { 
+observer.observe(document.body, {
     childList: true,
-    subtree: false
+    subtree: true
 }); 
