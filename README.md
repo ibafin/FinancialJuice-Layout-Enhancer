@@ -10,6 +10,12 @@ This Chrome extension modifies the layout of FinancialJuice.com by moving the ri
 4. Click "Load unpacked" and select the folder containing these extension files
 5. The extension will automatically activate when you visit FinancialJuice.com
 
+## Updating the Extension
+
+To update to the latest version:
+1. Download or clone the latest version of this repository
+2. Follow the installation instructions above to reinstall the extension
+
 ## Features
 
 - Moves right sidebar content to a horizontal bar at the top of the page
