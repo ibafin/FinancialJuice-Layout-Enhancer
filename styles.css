@@ -22,7 +22,8 @@ body {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     transform: translateZ(0);
-    min-height: 90px;
+    height: 90px; /* Fixed height */
+    max-height: 90px; /* Ensure maximum height */
 }
 
 /* Widget wrapper to maintain layout */
@@ -34,6 +35,8 @@ body {
     padding: 0 1rem;
     width: auto;
     min-width: min-content;
+    height: 100%; /* Fill container height */
+    overflow-y: hidden; /* Prevent vertical overflow */
 }
 
 /* Style for prep articles section */
@@ -45,6 +48,8 @@ body {
     padding: 0.5rem;
     background-color: #242d38;
     min-width: fit-content;
+    max-height: 90px; /* Match container height */
+    overflow-y: hidden; /* Prevent vertical overflow */
 }
 
 .prep-articles-container p {
@@ -80,6 +85,7 @@ body {
     height: 90px;
     min-width: 215px;
     background-color: #242d38;
+    overflow: hidden; /* Prevent overflow */
 }
 
 /* Preserve the TS widget styles */
@@ -89,6 +95,7 @@ body {
     height: 90px;
     min-width: 215px;
     background-color: #242d38;
+    overflow: hidden; /* Prevent overflow */
 }
 
 /* Style for the earnings and other content */
@@ -98,6 +105,8 @@ body {
     padding: 0 1rem;
     color: #fff;
     background-color: #242d38;
+    max-height: 90px; /* Match container height */
+    overflow-y: auto; /* Allow scrolling if content is too tall */
 }
 
 /* Adjust links in the earnings section */
